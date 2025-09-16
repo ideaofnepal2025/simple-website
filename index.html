@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea of Nepal - Advocating for Democratic Reform and Youth Empowerment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #DC143C 0%, #003893 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #DC143C;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #003893;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #DC143C;
+        }
+        
+        main {
+            margin-top: 80px;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(220, 20, 60, 0.9), rgba(0, 56, 147, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="25" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.95);
+            margin: 40px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #DC143C;
+            text-align: center;
+        }
+        
+        .section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #003893;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #DC143C;
+            border-top: 2px solid #003893;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #DC143C, #003893);
+            color: white;
+            border-radius: 15px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #FFFFFF;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #F0F0F0;
+            margin-top: 0.5rem;
+        }
+        
+        .quote {
+            background: linear-gradient(135deg, #DC143C, #003893);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: 10px;
+            left: 30px;
+            opacity: 0.3;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #DC143C, #003893);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #DC143C;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: #f8f9fa;
+            color: #003893;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #DC143C;
+        }
+        
+        footer {
+            background: rgba(51, 51, 51, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #DC143C, #003893);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding: 0 2rem;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            padding-right: calc(50% + 2rem);
+        }
+        
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            padding-left: calc(50% + 2rem);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: #DC143C;
+            border: 3px solid #003893;
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-left: 3px solid #DC143C;
+        }
+        
+        .flag-accent {
+            background: linear-gradient(90deg, #DC143C 33%, #003893 33%, #003893 66%, #FFFFFF 66%);
+            height: 5px;
+            width: 100px;
+            margin: 1rem auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                padding-left: 40px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+            
+            .timeline-item::before {
+                left: 20px !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🇳🇵 Idea of Nepal</a>
+            <ul class="nav-links">
+                <li><a href="#movement">The Movement</a></li>
+                <li><a href="#justification">Our Case</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#action">Take Action</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Reclaiming Nepal's Future</h1>
+                <div class="flag-accent"></div>
+                <p>A Generation's Stand Against Corruption, For Democracy, and Toward Genuine Transformation</p>
+            </div>
+        </section>
+
+        <section class="section" style="padding: 40px 0; margin: 20px 0; background: linear-gradient(135deg, #DC143C, #003893); color: white;">
+            <div class="container">
+                <div style="text-align: center; padding: 2rem;">
+                    <h3 style="color: white; margin-bottom: 1rem; font-size: 1.8rem;">🕯️ In Memorial</h3>
+                    <div class="flag-accent" style="background: linear-gradient(90deg, #FFFFFF 33%, #DC143C 33%, #DC143C 66%, #003893 66%); margin: 1rem auto;"></div>
+                    <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                        In memory of the 72 heroes who gave their lives for Nepal's democratic future.
+                    </p>
+                    <p style="font-size: 1.1rem; font-style: italic; opacity: 0.9;">
+                        Their sacrifice will not be in vain.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding: 30px 0; margin: 20px 0;">
+            <div class="container">
+                <div style="text-align: center; background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 1.5rem; border-radius: 15px; border-left: 4px solid #DC143C;">
+                    <p style="font-size: 1rem; color: #495057; margin: 0;">
+                        <strong>📊 Data-driven advocacy:</strong> All statistics sourced from World Bank, Transparency International, and verified news sources.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="movement" class="section">
+            <div class="container">
+                <h2>The September 2025 Democratic Uprising</h2>
+                <p style="font-size: 1.2rem; text-align: center; margin-bottom: 3rem; color: #666;">
+                    What began as a digital rights protest evolved into Nepal's most significant democratic movement since 2006, 
+                    driven by a generation demanding accountability, transparency, and real change.
+                </p>
+                
+                <div class="grid">
+                    <div class="stat">
+                        <span class="stat-number">107th</span>
+                        <span class="stat-label">Out of 180 countries in corruption ranking</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">20.8%</span>
+                        <span class="stat-label">Youth unemployment rate (World Bank 2024)</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">33.1%</span>
+                        <span class="stat-label">GDP from remittances (World Bank 2024)</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">72</span>
+                        <span class="stat-label">Lives lost fighting for democracy</span>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>September 4, 2025</h3>
+                            <p>Government bans 26 social media platforms, silencing digital voices and cutting communication lifelines for diaspora families.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>September 8-9, 2025</h3>
+                            <p>Peaceful protests turn deadly as security forces use live ammunition against demonstrators. Parliament building set ablaze.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>September 9, 2025</h3>
+                            <p>Prime Minister K.P. Sharma Oli resigns under unprecedented public pressure. Social media ban lifted.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>September 12, 2025</h3>
+                            <p>Former Chief Justice Sushila Karki appointed as interim Prime Minister through historic Discord-based democratic selection.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="justification" class="section">
+            <div class="container">
+                <h2>Why This Movement Was Necessary</h2>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h3>Systemic Corruption Crisis</h3>
+                        <p>Nepal ranks 107th out of 180 countries in Transparency International's 2024 Corruption Perceptions Index with a score of just 34/100. With corruption levels far below the global average, billions are lost annually while citizens struggle with basic necessities. The "Nepo Kids" phenomenon exposed how political elites' children live lavishly on taxpayer money while ordinary families send their children abroad for survival.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Economic Stagnation & Youth Exodus</h3>
+                        <p>With 839,266 exit labor permits issued in FY 2024/25, Nepal is hemorrhaging its human capital. 20.8% youth unemployment (World Bank 2024) forces a generation to seek dignity abroad while the domestic economy remains dependent on remittances (33.1% of GDP) rather than productive investment. This is not sustainable development—it's economic colonialism.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Democratic Deficit</h3>
+                        <p>Since 2008, 14 governments have formed under 8 different prime ministers—none completing a full term. The same trio of leaders (Oli, Dahal, Deuba) rotate power through backroom deals while public trust erodes. This isn't democracy; it's an oligarchy masquerading as representation.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Digital Rights Violation</h3>
+                        <p>The social media ban wasn't about regulation—it was about silencing dissent. For a country where 14.3 million people depend on social platforms for work, communication, and organizing, this was tantamount to cutting off oxygen to civil society.</p>
+                    </div>
+                </div>
+
+                <div class="quote">
+                    <p>"When peaceful change becomes impossible, revolutionary change becomes inevitable. The September uprising wasn't violence—it was democracy fighting for its life."</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="vision" class="section">
+            <div class="container">
+                <h2>Our Vision for Nepal's Future</h2>
+                <div class="flag-accent"></div>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h3>🏛️ Transparent Governance</h3>
+                        <p>Implement blockchain-based public spending tracking, open-source government operations, and citizen oversight mechanisms. Every rupee spent must be traceable, every decision documented, every policy democratically validated.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>💼 Economic Self-Reliance</h3>
+                        <p>Transform from a remittance-dependent economy to a knowledge and innovation hub. Invest in technology, renewable energy, and sustainable agriculture. Create 1 million dignified jobs within Nepal by 2030.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🎓 Youth Empowerment</h3>
+                        <p>Establish youth quotas in parliament, fund startup incubators, create apprenticeship programs linking education to employment. Our youth should be building Nepal, not building other countries.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🌐 Digital Democracy</h3>
+                        <p>Ensure internet access as a fundamental right, protect digital privacy, and use technology to enhance democratic participation. The Discord selection of our interim PM shows democracy's digital future.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>⚖️ Justice & Accountability</h3>
+                        <p>Prosecute corruption cases within 6 months, recover stolen assets, and ensure no politician is above the law. Justice delayed is democracy denied.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🏔️ Federal Restructuring</h3>
+                        <p>Genuine federalism that empowers local governments, reduces bureaucratic bottlenecks, and brings governance closer to the people. Power must flow from bottom-up, not top-down.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>International Precedents</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                    Nepal's Gen Z uprising follows successful youth-led democratic movements across South Asia:
+                </p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h3>🇱🇰 Sri Lanka 2022</h3>
+                        <p>The Aragalaya movement successfully ousted President Gotabaya Rajapaksa through sustained peaceful protests against economic mismanagement and corruption. Youth-led demonstrations showed that people power can topple even entrenched dynasties.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🇧🇩 Bangladesh 2024</h3>
+                        <p>Student-led uprising removed Sheikh Hasina Wazed after 15 years of increasingly authoritarian rule. Digital organizing and youth mobilization proved decisive in forcing democratic transition.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🇳🇵 Nepal 2025</h3>
+                        <p>Building on regional precedents while pioneering new forms of digital democracy. The Discord-based selection of leadership represents an evolution in how democratic participation can work in the digital age.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="action" class="cta">
+            <div class="container">
+                <h2>Join the Movement for Nepal's Democratic Future</h2>
+                <div class="flag-accent"></div>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    The September uprising was just the beginning. Real transformation requires sustained civic engagement, 
+                    policy advocacy, and youth leadership. Be part of building the Nepal our generation deserves.
+                </p>
+                
+                <a href="#" class="btn">Join Our Policy Team</a>
+                <a href="#" class="btn btn-secondary">Support the Movement</a>
+                <a href="#" class="btn btn-secondary">Share Our Vision</a>
+                
+                <div style="margin-top: 3rem;">
+                    <h3>Ways to Contribute:</h3>
+                    <div class="grid" style="margin-top: 2rem; text-align: left;">
+                        <div style="color: white;">
+                            <strong>📝 Policy Research:</strong> Help draft evidence-based policy proposals for economic reform, anti-corruption measures, and youth empowerment.
+                        </div>
+                        <div style="color: white;">
+                            <strong>🎯 Digital Advocacy:</strong> Amplify our message through social media, create content, and engage with online communities.
+                        </div>
+                        <div style="color: white;">
+                            <strong>🏛️ Grassroots Organizing:</strong> Build local chapters, organize community discussions, and mobilize voters around our platform.
+                        </div>
+                        <div style="color: white;">
+                            <strong>💡 Innovation Labs:</strong> Develop tech solutions for transparency, participate in hackathons, and prototype democratic tools.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Idea of Nepal. Fighting for transparency, youth empowerment, and democratic renewal.</p>
+            <div class="flag-accent" style="margin: 1rem auto 0;"></div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                Contact: contact@ideaofnepal.com | Sources available upon request
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and timeline items
+        document.querySelectorAll('.card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
